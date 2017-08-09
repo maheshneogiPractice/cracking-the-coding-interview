@@ -1,4 +1,4 @@
-import java.util.*;
+package array_and_strings;
 
 public class Ex_1__Is_Unique {
 
