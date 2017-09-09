@@ -1,3 +1,7 @@
+/*
+Check Permutation: Given two strings, write a method to decide if one is a permutation of the
+other.*/
+
 package array_and_strings;
 
 public class Ex_2_is_permutation {
@@ -31,8 +35,8 @@ public class Ex_2_is_permutation {
 	
 	public static void main(String[] args) {
 		
-		String input1 = "mahesh";
-		String input2 = "mhaseh";
+		String input1 = "maahesh";
+		String input2 = "mhasehh";
 		
 		if(isPermutation(input1).equals(isPermutation(input2)))
 		{
