@@ -33,6 +33,7 @@ public class Ex_7_Rotate_Matrix {
 	}
 
 	public static void main(String[] args) {
+		System.out.println("hello");
 		System.out.println("enter number of rows \n");
 		Scanner scanner = new Scanner(System.in);
 		int row = scanner.nextInt();
