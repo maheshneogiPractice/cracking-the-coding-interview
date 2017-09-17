@@ -1,38 +1,54 @@
 package array_and_strings;
 
-import java.util.*;
+import java.util.Scanner;
 
-public class Ex_7_Rotate_Matrix {
+public class Ex_8_Zero_Matrix {
 
-	static int[][] rotateMatrix(int[][] matrix) {
-		int n = matrix.length;
-
-		for (int layer = 0; layer < n / 2; layer++) {
-			int first = layer;
-			int last = n - 1 - first;
-
-			for (int i = first; i < last; i++) {
-				int offset = i - first;
-				int top = matrix[first][i];
-
-				// left -> top
-				matrix[first][i] = matrix[last - offset][first];
-
-				// bottom -> left
-				matrix[last - offset][first] = matrix[last][last - offset];
-
-				// right -> bottom
-				matrix[last][last - offset] = matrix[i][last];
-
-				// top -> right
-				matrix[i][last] = top;
+	static int[][] setZeroMatrix(int[][] matrix){
+		boolean[] row = new boolean[matrix.length];
+		boolean[] col = new boolean[matrix[0].length];
+		
+		for(int i=0; i<matrix.length;i++)
+			for(int j=0; j<matrix[0].length; j++)
+			{
+				if(matrix[i][j]==0)
+				{
+					row[i] = true;
+					col[j] = true;
+				}
 			}
+		
+		for(int i=0; i<row.length;i++)
+		{
+			if(row[i])
+				matrix = nullifyRow(matrix, i);
 		}
-
+		for(int i=0; i<col.length; i++)
+		{
+			if(col[i])
+				matrix = nullifyCol(matrix, i);
+		}
+		
+		
+		
 		return matrix;
 	}
-
-	public static void main(String[] args) {		
+	
+	static int[][] nullifyRow(int[][] matrix, int row)
+	{
+		for(int i=0;i<matrix[0].length;i++)
+			matrix[row][i]=0;
+		return matrix;
+	}
+	
+	static int[][] nullifyCol(int[][] matrix, int col)
+	{
+		for(int i=0;i<matrix.length;i++)
+			matrix[i][col]=0;
+		return matrix;
+	}
+	public static void main(String[] args) {
+		
 		System.out.println("enter number of rows \n");
 		Scanner scanner = new Scanner(System.in);
 		int row = scanner.nextInt();
@@ -55,7 +71,7 @@ public class Ex_7_Rotate_Matrix {
 				System.out.print("\n");
 			}
 			System.out.println("Rotated matrix is ");
-			matrix = rotateMatrix(matrix);
+			matrix = setZeroMatrix(matrix);
 
 			for (int i = 0; i < row; i++) {
 				for (int j = 0; j < col; j++) {
@@ -67,6 +83,8 @@ public class Ex_7_Rotate_Matrix {
 			}
 		} else
 			System.out.println("num of rows n cols should be same");
+
+	
 
 	}
 
